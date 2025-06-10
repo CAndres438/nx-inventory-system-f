@@ -1,0 +1,36 @@
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inventory-container {
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.inline-success-banner,
+.inline-error-banner {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.inline-success-banner {
+  background-color: #4caf50;
+  color: white;
+}
+
+.inline-error-banner {
+  background-color: #e57373;
+  color: white;
+}

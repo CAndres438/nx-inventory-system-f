@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Editar' : 'Crear' }} Producto</h2>
+
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" mat-dialog-content class="form-grid">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" formControlName="quantity" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha ingreso</mat-label>
+    <input matInput [matDatepicker]="pickerDateIn" formControlName="dateIn" [max]="today" />
+    <mat-datepicker-toggle matSuffix [for]="pickerDateIn"></mat-datepicker-toggle>
+    <mat-datepicker #pickerDateIn></mat-datepicker>
+  </mat-form-field>
+  <div *ngIf="errorMessage" class="error-banner">
+    {{ errorMessage }}
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-stroked-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ isEditMode ? 'Actualizar' : 'Crear' }}
+    </button>
+  </div>
+
+
+</form>

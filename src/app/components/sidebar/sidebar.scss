@@ -1,0 +1,54 @@
+.sidebar {
+  width: 220px;
+  background-color: #121212;
+  color: white;
+  height: 100vh;
+  padding: 1rem;
+  transition: width 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+  border-right: 1px solid #2c2c2c;
+  overflow: hidden;
+  text-align: center;
+
+  &.collapsed {
+    width: 60px;
+
+    .menu li a {
+      text-indent: -9999px;
+    }
+  }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 1rem 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        transition: all 0.2s;
+      }
+
+      a.active {
+        font-weight: bold;
+        color: #90caf9;
+      }
+
+      a:hover {
+        color: #64b5f6;
+      }
+    }
+  }
+}

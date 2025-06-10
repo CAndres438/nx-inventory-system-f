@@ -1,0 +1,14 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+
+  <ul class="menu">
+    <li>
+      <a routerLink="/inventario" routerLinkActive="active">Inventario</a>
+    </li>
+    @if (isAdmin) {
+      <li>
+        <a routerLink="/roles" routerLinkActive="active">Roles</a>
+      </li>
+    }
+  </ul>
+</div>

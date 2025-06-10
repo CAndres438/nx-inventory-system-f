@@ -1,0 +1,23 @@
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  min-width: 300px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.error-banner {
+  background-color: #e57373;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+

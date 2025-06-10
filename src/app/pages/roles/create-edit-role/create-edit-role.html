@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ data ? 'Editar Rol' : 'Crear Rol' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" mat-dialog-content class="form-grid">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre visible</mat-label>
+    <input matInput formControlName="displayName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" *ngIf="!isEditMode">
+    <mat-label>Nombre del sistema</mat-label>
+    <input matInput formControlName="systemName" />
+  </mat-form-field>
+
+  <div *ngIf="errorMessage" class="inline-error-banner">
+    {{ errorMessage }}
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-stroked-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ data ? 'Actualizar' : 'Crear' }}
+    </button>
+  </div>
+</form>

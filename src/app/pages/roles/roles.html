@@ -1,0 +1,41 @@
+<mat-card class="roles-container">
+  <div *ngIf="successMessage" class="inline-success-banner">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="inline-error-banner">
+    {{ errorMessage }}
+  </div>
+  <mat-card-title>Gestión de Roles</mat-card-title>
+
+  <button mat-raised-button color="accent" (click)="openCreateModal()">
+    + Crear rol
+  </button>
+
+  <table mat-table [dataSource]="roleList" class="mat-elevation-z8">
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let role">{{ role.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let role">
+        <button mat-icon-button color="accent" (click)="toggleRole(role)">
+          <mat-icon>{{ role.active ? 'lock_open' : 'lock' }}</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let role">
+        <button disabled="true" mat-icon-button color="primary" (click)="openEditModal(role)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

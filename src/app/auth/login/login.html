@@ -1,0 +1,27 @@
+<div class="login-container">
+  <mat-card>
+    <h2 style="text-align: center; margin-top: 0;">Iniciar Sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">El usuario es obligatorio</mat-error>
+        <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">Mínimo 4 caracteres</mat-error>
+        <mat-error *ngIf="loginForm.get('username')?.hasError('maxlength')">Máximo 10 caracteres</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Mínimo 6 caracteres</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+    </form>
+    <div class="switch-link">
+      ¿No tienes una cuenta?
+      <a routerLink="/register">Regístrate ahora</a>
+    </div>
+  </mat-card>
+</div>

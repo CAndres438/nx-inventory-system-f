@@ -1,0 +1,88 @@
+<mat-card class="inventory-container">
+  <div *ngIf="successMessage" class="inline-success-banner">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="inline-error-banner">{{ errorMessage }}</div>
+  <mat-card-title>Inventario</mat-card-title>
+
+
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="filter-form">
+    <div class="filter-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre producto</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="createdBy" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Desde</mat-label>
+        <input matInput [matDatepicker]="pickerStart" formControlName="startDate" [max]="today" />
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Hasta</mat-label>
+        <input matInput [matDatepicker]="pickerEnd" formControlName="endDate" [max]="today" />
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Filtrar</button>
+    </div>
+  </form>
+
+  <button mat-raised-button color="accent" (click)="openCreateModal()">➕ Agregar producto</button>
+
+
+  <table mat-table [dataSource]="inventoryList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateIn">
+      <th mat-header-cell *matHeaderCellDef>Fecha ingreso</th>
+      <td mat-cell *matCellDef="let item">{{ item.dateIn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef>Registrado por</th>
+      <td mat-cell *matCellDef="let item">{{ item.createdBy }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="modifiedBy">
+      <th mat-header-cell *matHeaderCellDef>Modificado por</th>
+      <td mat-cell *matCellDef="let item">{{ item.modifiedBy || '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateModified">
+      <th mat-header-cell *matHeaderCellDef>Última modificación</th>
+      <td mat-cell *matCellDef="let item">{{ item.dateModified || '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-icon-button color="primary" (click)="openEditModal(item)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteItem(item.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
