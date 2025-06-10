@@ -9,6 +9,10 @@ utilizando JWT para autenticación y protección de rutas.
 
 ---
 
+## Evidencia General (Incluye imágenes de pruebas funcionales y ERD
+
+🔍 [Ver carpeta de evidencias](./Evidencia_General/)
+
 ## 🚀 Tecnologías
 
 - Angular 20
