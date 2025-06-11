@@ -48,6 +48,21 @@ Por defecto, la app se ejecutará en `http://localhost:4200`
 
 ---
 
+## 🌐 Configuración de entorno
+
+Este proyecto utiliza archivos de entorno (`environment.ts`) para definir la URL base del backend.
+
+- En **desarrollo**, la URL se define en `src/environments/environment.ts`:
+  ```ts
+  export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:8080/api'
+  };
+  ```
+
+- En **producción**, el archivo `environment.prod.ts` se **genera o actualiza automáticamente** durante el build mediante el script `set-env.js`.  
+  Este script toma la variable de entorno `NG_APP_API_URL` definida en Vercel y la inyecta en el archivo.
+
 ## 🔐 Autenticación
 
 - Los usuarios deben iniciar sesión para acceder al sistema.
